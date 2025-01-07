@@ -1,8 +1,17 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
 
 app.get("/api", (req, res) => {
-    res.json({ "users": ["userOne", "userTwo", "userThree"] })
+    res.json({ "users": ["userOne", "userTwo", "userThree", "userFour"] })
 })
 
-app.listen(5000, () => {console.log("Server started on port 5000") })
+app.post("/post", (req, res) => {
+    console.log("Connected to React");
+    res.redirect("/");
+});
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT,
+    console.log(`Server started on port ${PORT}`)
+);
