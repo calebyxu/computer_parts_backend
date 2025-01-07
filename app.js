@@ -1,6 +1,8 @@
 //Modules
-const express = require("express");
-const path = require("path");
+import express from "express";
+
+//React js
+import { createRoot } from 'react-dom/client';
 
 //Init
 const app = express();
@@ -16,4 +18,6 @@ app.listen(PORT, (error) =>{
     }
 }
 );
+
+
 
