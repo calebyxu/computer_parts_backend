@@ -6,4 +6,4 @@ function MyButton() {
     );
 }
 
-export default appendFile;
+export default App;
