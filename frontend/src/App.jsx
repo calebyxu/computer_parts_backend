@@ -1,17 +1,32 @@
 import './assets/css/App.css'
 import Navbar from './components/NavBar.jsx'
-import React, { useSate, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
+
+	const [backendData, setBackendData] = useState([{}])
+
 	useEffect(() => {
-		fetch("http://localhost:8000")
-			.then((res) => res.json())
-			.then((data) => setMessage(data.message));
-	});
+		fetch("http://localhost:5000/api"
+		).then(
+			response => response.json()
+		).then(
+			data => {
+				setBackendData(data)
+			}
+		);
+	}, []);
 
 	return (
 		<>
 			<Navbar />
+			{(typeof backendData.users === 'undefined') ? (
+				<p>Loading...</p>
+			) : (
+				backendData.users.map((user, i) => (
+					<p key={i}>{user}</p>
+				))
+			)}
 		</>
   	);
 }
