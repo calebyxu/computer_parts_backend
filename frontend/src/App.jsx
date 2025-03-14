@@ -1,4 +1,5 @@
 import './assets/css/App.css'
+import './assets/css/styles.css'
 import Navbar from './components/NavBar.jsx'
 import React, { useState, useEffect } from "react";
 

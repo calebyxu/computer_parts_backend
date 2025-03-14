@@ -1,0 +1,45 @@
+/* General */
+:root {
+    --darkBlue: #213547;
+    --darkGrey: #242424;
+    --white: rgba(255, 255, 255, 0.87);
+
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    background-color: var(--darkGrey);
+    color: var(--white);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.body-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 50px;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    margin-top: 20px;
+    padding: 0 20px;
+    width: 100%;
+}
+
+nav a {
+    padding: 0 10px;
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--darkGrey);
+    background-color: var(--white);
+    transition: 0.2s;
+}
