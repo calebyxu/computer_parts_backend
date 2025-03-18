@@ -2,6 +2,8 @@ import './assets/css/App.css'
 import './assets/css/styles.css'
 import Navbar from './components/NavBar.jsx'
 import React, { useState, useEffect } from "react";
+import { BsGraphDown } from "react-icons/bs";
+import { TbCircuitBattery } from "react-icons/tb";
 
 function App() {
 
@@ -28,6 +30,7 @@ function App() {
 					<p key={i}>{user}</p>
 				))
 			)}
+			<BsGraphDown className="graph" viewBox= "0 0 100 100"/>
 		</>
   	);
 }
