@@ -17,6 +17,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.root {
+    width: 100%;
+}
+
 .body-container {
     display: flex;
     justify-content: center;
@@ -29,6 +33,7 @@ nav {
     margin-top: 20px;
     padding: 0 20px;
     width: 100%;
+    font-size: 20px;
 }
 
 nav a {
