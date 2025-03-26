@@ -22,14 +22,14 @@ function App() {
 	return (
 		<>
 			<Navbar />
-			{(typeof backendData.users === 'undefined') ? (
+			{/* {(typeof backendData.users === 'undefined') ? (
 				<p>Loading...</p>
 			) : (
 				backendData.users.map((user, i) => (
 					<p key={i}>{user}</p>
 				))
-			)}
-			<BsGraphDown className="graph" viewBox= "0 0 100 100"/>
+			)} */}
+			{/* <BsGraphDown className="graph" viewBox= "0 0 100 100"/> */}
 		</>
   	);
 }

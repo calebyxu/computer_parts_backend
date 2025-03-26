@@ -2,6 +2,12 @@
 
 /* header */
 .hero-header {
-    margin-bottom: 175px;
+    margin-bottom: 75px;
     color: var(--white);
 }
+
+.hero-img {
+    width: 500px;
+    height: 500px;
+}
+

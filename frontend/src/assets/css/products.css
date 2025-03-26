@@ -57,6 +57,14 @@
     border-radius: 5px;
     color: var(--darkGrey);
 }
+
+.item:hover {
+    box-shadow: 0 0 20px lightgrey;
+    transform: scale(1.05);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
 .item img {
     height: 100px;
     width: 200px;
@@ -77,16 +85,18 @@
     height: 100%; 
     overflow: auto; 
     background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.4);
   }
   
   /* Modal Content/Box */
   .modal-content {
+    display: flex;
     background-color: #fefefe;
     margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; 
+    width: 80%;
+    color: black; 
   }
   
   /* The Close Button */

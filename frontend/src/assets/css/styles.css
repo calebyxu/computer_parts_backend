@@ -5,6 +5,7 @@
     --greyBlue: #36454F;
     --lightGreen: #51e172;
     --discordPurple: #8B51E0;
+    --darkPurple: #150c25;
     --blue: #646cff;
     --white: rgba(255, 255, 255, 0.87);
 
@@ -12,7 +13,7 @@
     line-height: 1.5;
     font-weight: 400;
 
-    background-color: var(--darkGrey);
+    background-color: black;
     color: var(--white);
 
     font-synthesis: none;
@@ -47,6 +48,8 @@ svg {
 .body-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
 }
 
