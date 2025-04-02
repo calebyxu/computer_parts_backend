@@ -7,7 +7,7 @@ function openModel(e) {
 
 const modal = document.querySelector(".modal-window");
 const btnList = document.querySelectorAll('.item');
-const span = document.getElementsByClassName("close")[0];
+const span = document.querySelector('.close');
 
 /* Add event listeners to buttons */
 for (var i=0; i < btnList.length; i++) {

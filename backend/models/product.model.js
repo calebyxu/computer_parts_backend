@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
+    _id:{
+        type: Number,
+        required: true
+    },
     name:{
         type: String,
         required: true
