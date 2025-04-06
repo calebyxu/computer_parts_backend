@@ -11,10 +11,22 @@ export const getProducts = async (req, res) => {
     }
 }
 
-export const createProduct = async (req, res) => {
-    const product = req.body;
+export const searchProduct = async (req, res) => {
+    const searchStr = req.body.data;
+    
+    try {
+        const products = await Product.find({ name: {$regex: searchStr, $options:'i'} })
+        res.status(200).json({ sucess: true, data: products })
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error som ting wong' })
+        console.log(error)
+    }
+}
 
-    if(!product.name || !product.price || !product.image) {
+export const createProduct = async (req, res) => {
+    const product = req.body
+
+    if(!product._id || !product.name || !product.price || !product.image) {
         return res.status(400).json({ success:false, message: "Please provide all fields" });
     }
 
@@ -34,7 +46,7 @@ export const updateProduct = async (req, res) => {
 
     const product = req.body;
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
+    if(Number.isInteger(id)){
         return res.status(404).json({ success: false, message:"Invalid Product Id" });
     }
 
@@ -47,15 +59,15 @@ export const updateProduct = async (req, res) => {
 }
 
 export const deleteProduct = async (req, res) => {
-    const {id} = req.params;
+    const { id } = req.params;
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
+    if(Number.isInteger(id)){
         return res.status(404).json({ success: false, message:"Invalid Product Id" });
     }
     
     try {
-        await Product.findByIdAndDelete(id);
-        res.status(200).json({ success: true, message: "Product deleted" });
+        await Product.findOneAndDelete({ _id: id });
+        res.status(200).json({ success: true, message: id });
     } catch (error) {
         console.error("Error in Deleting product:", error.message);
         res.status(500).json({ success: false, message: "Server Error" });

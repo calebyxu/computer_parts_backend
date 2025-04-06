@@ -8,6 +8,7 @@ function Layout() {
             <nav>
                 <Link to="/"><IoIosRocket /></Link>
                 <Link to="/Login">Login</Link>
+                <Link to="/Products">Products</Link>
             </nav>
 
             <Outlet />
