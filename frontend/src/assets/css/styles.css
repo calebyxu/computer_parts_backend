@@ -25,6 +25,10 @@
     text-align: center;
 }
 
+img {
+    overflow-clip-margin: unset;
+}
+
 body {
     margin: 0;
 }
