@@ -12,15 +12,17 @@ export const Product = createContext(null)
 function Products() {
     const [item, setItem] = useState({})
     const [backendData, setBackendData] = useState([{}])
+    const [searchData, setSearchData] = useState([{}])
 
     useEffect(() => {
         fetch("http://localhost:5000/api/products")
         .then(response => {return response.json()})
-        .then(data => {setBackendData(data)});
+        .then(data => {setBackendData(data), setSearchData(data)});
     }, []);
 
     function openModel(e) {
         let prodId = e.currentTarget.getAttribute('id') - 1
+        console.log(prodId)
         modal.style.display = "block"
 
         // document.querySelector(".modal-id").innerHTML = backendData.data && backendData.data[prodId].name
@@ -40,27 +42,46 @@ function Products() {
     /* Thin Client Method */
     /* POST request => mongoose query => send data from backend to client */
     /* This method is outdated */
-    const submitHandler = async (e) => {
-        if (e.key === 'Enter' || e.currentTarget.id === 'submit') {
+    // const submitHandler = async (e) => {
+    //     if (e.key === 'Enter' || e.currentTarget.id === 'submit') {
+    //         e.preventDefault()
+
+    //         let searchStr = document.querySelector('#input').value
+
+    //         const requestOptions = {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ data: searchStr })
+    //         }
+    //         const response = await fetch('http://localhost:5000/api/products', requestOptions)
+    //         const data = await response.json()
+    //         setBackendData(() => data)
+    //     }
+    // }
+
+    /* Thick Client Method */
+    /* Load all products from backend => frontend string comparasion to search (the thing you used for recipe web) */
+    function submitHandler(e) {
+        /* 
+            get string from input text
+            apply string to regex or some other search method (const results = array.filter(str => str.includes('js')))
+            update backendData with the useState
+        */
+        const searchList = []
+
+        if (e.key === 'Enter' || e.currentTarget.id === 'Submit') {
             e.preventDefault()
-
-            let searchStr = document.querySelector('#input').value
-
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ data: searchStr })
+            const searchStr = document.querySelector('#input').value.toLowerCase()
+            for (let i = 0; i < backendData.data.length; i++) {
+                if (backendData.data[i].name.toLowerCase().includes(searchStr)) {
+                    searchList.push(backendData.data && backendData.data[i])
+                }
             }
-            const response = await fetch('http://localhost:5000/api/products', requestOptions)
-            const data = await response.json()
-            setBackendData(() => data)
+            {setSearchData({success: true, data: searchList})}
         }
     }
-
-    /* Fat Client Method */
-    /* Load all products from backend => frontend string comparasion to search (the thing you used for recipe web) */
 
     // console.log(backendData.data && backendData.data.map(products => products.name))
     const modal = document.querySelector('.modal-window')
@@ -77,7 +98,7 @@ function Products() {
                         </div>
                         <article>
                             <img src={item.image}></img>
-                            <h3>{item.price}</h3>
+                            <h3>${item.price}</h3>
                             <div class='modal-add'>
                                 <button>Add To Cart</button>
                             </div>
@@ -85,19 +106,16 @@ function Products() {
                     </div>
                 </div>
                 <div class="content-container">
-                    <form class="product-filter">
-                        <h2>hello</h2>
-                    </form>
                     <div class="product-container">
                         <div class="product-bar">
-                            <h4>{backendData.data && backendData.data.length} items searched</h4>
+                            <h4>{searchData.data && searchData.data.length} items searched</h4>
                             <form onSubmit={submitHandler}>
                                 <input type='text' name='search' id='input' onKeyDown={submitHandler} placeholder='Search...'/>
                                 <div type='submit' id='submit' onClick={submitHandler}><IoSearchOutline /></div>
                             </form>
                         </div>
                         <div class="item-container">
-                            {backendData.data && backendData.data.map(product => 
+                            {searchData.data && searchData.data.map(product => 
                                 <ProductCard 
                                     openModel={openModel} 
                                     key={product._id}
