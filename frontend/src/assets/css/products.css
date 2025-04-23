@@ -13,6 +13,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: var(--darkGrey);
+    padding: 30px;
+    border-radius: 20px;
+    width: 1500px;
 }
 
 .product-filter {
