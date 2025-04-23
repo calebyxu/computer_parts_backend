@@ -1,1 +1,2 @@
 heroku login: heroku login -i
+logs: heroku logs --app comp-proj --tail
