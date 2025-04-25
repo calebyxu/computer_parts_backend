@@ -9,7 +9,7 @@
     "build": "./node_modules/.bin/vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "serve -s dist",
+    "start": "vite",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
