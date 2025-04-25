@@ -1,5 +1,3 @@
-
-
 export const getHome = async (req, res) => {
     try {
         res.json({ "users": ["userOne", "userTwo", "userThree"] })
