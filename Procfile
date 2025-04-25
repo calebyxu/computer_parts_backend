@@ -1,1 +1,2 @@
-web: bin/start-nginx-static
+web: npm run start
+# web: bin/start-nginx-static
